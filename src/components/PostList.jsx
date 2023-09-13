@@ -16,33 +16,13 @@ import {
   Typography,
 } from "@mui/material";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
 
 const itemsPerPage = 3; // Number of articles to display per page
-
-const StyledGridContainer = styled(Grid)`
-  margin-top: 16px;
-  margin-bottom: 16px;
-`;
-
-const StyledCardTitle = styled(Typography)`
-  && {
-    text-decoration: none;
-    transition: color 0.3s;
-    &:hover {
-      color: #1976d2; // Couleur au survol
-    }
-  }
-`;
-
-const StyledCardMedia = styled(CardMedia)`
-  object-fit: cover;
-`;
 
 const PostList = () => {
   const posts = useSelector((state) => state.postReducer.posts);
   const [currentPage, setCurrentPage] = useState(1);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isloading, setIsloading] = useState(false);
 
   // Calculate the total number of pages
   const totalPages = Math.ceil(posts.length / itemsPerPage);
@@ -58,33 +38,65 @@ const PostList = () => {
 
   return (
     <Container maxWidth="md">
-      {isLoading && (
+      {isloading && (
         <Box>
           <Box>
-            <CircularProgress color="secondary" size={64} thickness={4} />
-            <Typography variant="h6" color="secondary" mt={2}>
+            <CircularProgress color="primary" size={64} thickness={4} />
+            <Typography variant="h6" color="primary" mt={2}>
               Loading...
             </Typography>
           </Box>
         </Box>
       )}
 
-      <StyledGridContainer container spacing={4}>
-        {currentPosts.map((post, index) => (
-          <Grid item xs={12} sm={6} md={4} key={index}>
-            <Card>
-              <Link to={`/read/${post.id}`}>
-                <StyledCardMedia component="img" height="140" image={post.image} alt="image title" />
+<Grid
+  container
+  spacing={4}
+  style={{ marginTop: "20px", marginBottom: "20px" }}
+>
+  {currentPosts.map((post, index) => (
+    <Grid item xs={12} sm={6} md={4} key={index}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          height: "100%",
+        }}
+      >
+        <Card style={{ flexGrow: 1 }}>
+          <Link to={`/read/${post.id}`}>
+            <CardMedia
+              component="img"
+              height="140"
+              image={post.image}
+              alt="image title"
+            />
+          </Link>
+          <CardContent>
+            <Typography variant="h6" gutterBottom>
+              <Link
+                style={{
+                  textDecoration: "none",
+                  transition: "transform 0.2s",
+                  display: "inline-block",
+                }}
+                to={`/read/${post.id}`}
+                onMouseEnter={(e) => {
+                  e.target.style.transform = "scale(1.1)";
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.transform = "scale(1)";
+                }}
+              >
+                {post.title}
               </Link>
-              <CardContent>
-                <StyledCardTitle variant="h6" gutterBottom>
-                  <Link to={`/read/${post.id}`}>{post.title}</Link>
-                </StyledCardTitle>
-              </CardContent>
-            </Card>
-          </Grid>
-        ))}
-      </StyledGridContainer>
+            </Typography>
+          </CardContent>
+        </Card>
+      </div>
+    </Grid>
+  ))}
+</Grid>
 
       <div className="pagination">
         <Button
