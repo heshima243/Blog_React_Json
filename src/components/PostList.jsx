@@ -16,13 +16,33 @@ import {
   Typography,
 } from "@mui/material";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
 
-const itemsPerPage = 6; // Number of articles to display per page
+const itemsPerPage = 3; // Number of articles to display per page
 
-const PostList = ({ classes }) => {
+const StyledGridContainer = styled(Grid)`
+  margin-top: 16px;
+  margin-bottom: 16px;
+`;
+
+const StyledCardTitle = styled(Typography)`
+  && {
+    text-decoration: none;
+    transition: color 0.3s;
+    &:hover {
+      color: #1976d2; // Couleur au survol
+    }
+  }
+`;
+
+const StyledCardMedia = styled(CardMedia)`
+  object-fit: cover;
+`;
+
+const PostList = () => {
   const posts = useSelector((state) => state.postReducer.posts);
   const [currentPage, setCurrentPage] = useState(1);
-  const [isloading, setIsloading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   // Calculate the total number of pages
   const totalPages = Math.ceil(posts.length / itemsPerPage);
@@ -32,30 +52,40 @@ const PostList = ({ classes }) => {
   const endIndex = startIndex + itemsPerPage;
   const currentPosts = posts.slice(startIndex, endIndex);
 
-
   const handlePageChange = (newPage) => {
     setCurrentPage(newPage);
   };
 
   return (
-    <Container className={classes.cardGrid} maxWidth="md">
-      {isloading && (
-        <Box className={classes.isloadingbox1}>
-          <Box className={classes.isloadingbox2}>
-            <CircularProgress color="primary" size={64} thickness={4} />
-            <Typography variant="h6" color="primary" mt={2}>
+    <Container maxWidth="md">
+      {isLoading && (
+        <Box>
+          <Box>
+            <CircularProgress color="secondary" size={64} thickness={4} />
+            <Typography variant="h6" color="secondary" mt={2}>
               Loading...
             </Typography>
           </Box>
         </Box>
       )}
 
-      <Grid container spacing={4}>
+      <StyledGridContainer container spacing={4}>
         {currentPosts.map((post, index) => (
-          
-          <Article classes={classes} post={post} key={index} />
+          <Grid item xs={12} sm={6} md={4} key={index}>
+            <Card>
+              <Link to={`/read/${post.id}`}>
+                <StyledCardMedia component="img" height="140" image={post.image} alt="image title" />
+              </Link>
+              <CardContent>
+                <StyledCardTitle variant="h6" gutterBottom>
+                  <Link to={`/read/${post.id}`}>{post.title}</Link>
+                </StyledCardTitle>
+              </CardContent>
+            </Card>
+          </Grid>
         ))}
-      </Grid>
+      </StyledGridContainer>
+
       <div className="pagination">
         <Button
           variant="contained"

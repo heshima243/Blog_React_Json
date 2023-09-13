@@ -2,7 +2,7 @@ import { Typography } from "@mui/material";
 
 const Footer = ({ classes }) => {
   return (
-    <footer className={classes.footer}>
+    <footer>
       <Typography variant="h6" align="center" gutterBottom>
         Heshima inc
       </Typography>

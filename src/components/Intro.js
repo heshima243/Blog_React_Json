@@ -1,8 +1,8 @@
 import { Button, Container, Grid, Typography } from "@mui/material";
 
-const Intro = ({ classes }) => {
+const Intro = () => {
   return (
-    <div className={classes.container}>
+    <div>
       <Container maxWidth="sm">
         <Typography
           variant="h4"
@@ -16,7 +16,7 @@ const Intro = ({ classes }) => {
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia
           persp iciatis iusto eaque reprehenderit voluptatem voluptatibus, quide
         </Typography>
-        <div className={classes.button}>
+        <div>
           <Grid container spacing={2} justifyContent="center">
             <Grid item>
               <Button variant="contained" color="success">

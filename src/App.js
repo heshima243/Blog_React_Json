@@ -5,7 +5,7 @@ import { createTheme } from "@mui/material/styles";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import Footer from "./components/Footer";
-import useStyles from "./style";
+// import useStyles from "./style";
 import PostForm from "./components/PostForm";
 import EditPost from "./components/EditPost";
 import ReadPost from "./components/ReadPost";
@@ -15,13 +15,12 @@ import Projects from "./components/Projects";
 
 
 
-
 const theme = createTheme({
   // Your theme configuration here
 });
 
 const App = () => {
-  const classes = useStyles();
+
   return (
     <ThemeProvider theme={theme}>
       <Router>
@@ -29,13 +28,13 @@ const App = () => {
         <Routes>
         <Route path="/" element={<Home/>} /> 
         <Route path="/post" element={<PostForm/>} /> 
-        <Route path="/edith/:id" classes={classes} element={<EditPost/>} /> 
-        <Route path="/read/:id" classes={classes} element={<ReadPost/>} /> 
+        {/* <Route path="/edith/:id" classes={classes} element={<EditPost/>} />  */}
+        {/* <Route path="/read/:id" classes={classes} element={<ReadPost/>} />  */}
         <Route path="/projects"  element={<Projects/>} /> 
-        <Route path="*" classes={classes} element={<NotFound/>} /> 
+        <Route path="*"  element={<NotFound/>} /> 
         </Routes>
         <About/>
-        <Footer classes={classes}/>
+        <Footer/>
       </Router>
       
   

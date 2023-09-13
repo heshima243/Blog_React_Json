@@ -1,31 +1,26 @@
-import { Container, Typography} from "@mui/material";
-// import { makeStyles } from "@mui/styles";
-// import { makeStyles } from "@mui/styles";
-// import { makeStyles } from "@mui/styles";
-import makeStyles from '@mui/styles/makeStyles';
+import React from "react";
 import { Link } from "react-router-dom";
 
-const useStyles = makeStyles((theme) => ({
-    centerContent: {
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      justifyContent: "center",
-      height: "100vh", 
-      textAlign:"center"
-    },
-  }));
-
-
 const NotFound = () => {
+  const centerContentStyle = {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    height: "100vh",
+    textAlign: "center",
+  };
 
-    const classes = useStyles();
+  const typographyStyle = {
+    color: "red",
+    fontSize: "24px",
+  };
 
   return (
-    <Container className={classes.centerContent}>
-      <Typography color='error' variant="h4">Ouups!! Page Not Found</Typography>
-      <Link to='/'>Return Home page</Link>
-    </Container>
+    <div style={centerContentStyle}>
+      <div style={typographyStyle}>Ouups!! Page Not Found</div>
+      <Link to="/">Return Home page</Link>
+    </div>
   );
 };
 
