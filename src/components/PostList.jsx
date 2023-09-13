@@ -32,6 +32,8 @@ const PostList = () => {
   const endIndex = startIndex + itemsPerPage;
   const currentPosts = posts.slice(startIndex, endIndex);
 
+  window.scrollTo(0, 0);
+
   const handlePageChange = (newPage) => {
     setCurrentPage(newPage);
   };
@@ -49,54 +51,41 @@ const PostList = () => {
         </Box>
       )}
 
-<Grid
-  container
-  spacing={4}
-  style={{ marginTop: "20px", marginBottom: "20px" }}
->
-  {currentPosts.map((post, index) => (
-    <Grid item xs={12} sm={6} md={4} key={index}>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          height: "100%",
-        }}
+      <Grid
+        container
+        spacing={4}
+        style={{ marginTop: "20px", marginBottom: "20px" }}
       >
-        <Card style={{ flexGrow: 1 }}>
-          <Link to={`/read/${post.id}`}>
-            <CardMedia
-              component="img"
-              height="140"
-              image={post.image}
-              alt="image title"
-            />
-          </Link>
-          <CardContent>
-            <Typography variant="h6" gutterBottom>
-              <Link
-                style={{
-                  textDecoration: "none",
-                  transition: "transform 0.2s",
-                  display: "inline-block",
-                }}
-                to={`/read/${post.id}`}
-                onMouseEnter={(e) => {
-                  e.target.style.transform = "scale(1.1)";
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.transform = "scale(1)";
-                }}
-              >
-                {post.title}
-              </Link>
-            </Typography>
-          </CardContent>
-        </Card>
-      </div>
-    </Grid>
-  ))}
-</Grid>
+        {currentPosts.map((post, index) => (
+          <>
+            {" "}
+            {post ? (
+              <Article post={post} key={index} />
+            ) : (
+              <div>
+                {isloading && (
+                  <Box
+                    style={{
+                      textAlign: "center",
+                      backgroundColor: "#edeff2",
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      height: "50vh",
+                    }}
+                  >
+                    <CircularProgress color="primary" size={64} thickness={4} />
+                    <Typography variant="h6" color="primary" mt={2}>
+                      Loading...
+                    </Typography>
+                  </Box>
+                )}
+              </div>
+            )}
+          </>
+        ))}
+      </Grid>
 
       <div className="pagination">
         <Button

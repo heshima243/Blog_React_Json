@@ -16,7 +16,7 @@ import Projects from "./components/Projects";
 
 
 const theme = createTheme({
-  // Your theme configuration here
+ 
 });
 
 const App = () => {
@@ -28,8 +28,8 @@ const App = () => {
         <Routes>
         <Route path="/" element={<Home/>} /> 
         <Route path="/post" element={<PostForm/>} /> 
-        {/* <Route path="/edith/:id" classes={classes} element={<EditPost/>} />  */}
-        {/* <Route path="/read/:id" classes={classes} element={<ReadPost/>} />  */}
+        <Route path="/edith/:id" element={<EditPost/>} /> 
+        <Route path="/read/:id" element={<ReadPost/>} /> 
         <Route path="/projects"  element={<Projects/>} /> 
         <Route path="*"  element={<NotFound/>} /> 
         </Routes>

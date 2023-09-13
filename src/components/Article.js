@@ -21,20 +21,48 @@ const Article = ({ post }) => {
 
   return (
     <Grid item xs={12} sm={6} md={4}>
-      <Card>
-        <Link  to={`/read/${post.id}`}>
-          <CardMedia
-            
-            image={post.image}
-            title="image title"
-          />
-        </Link>
-        <CardContent>
-          <Typography variant="h6"  gutterBottom>
-            <Link to={`/read/${post.id}`}>{post.title}</Link>
-          </Typography>
-        </CardContent>
-      </Card>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          height: "100%",
+        }}
+      >
+        <Card style={{ flexGrow: 1 }}>
+          <Link to={`/read/${post.id}`}>
+            <CardMedia
+              component="img"
+              // height="200"
+              object-fit="contain"
+              max-width="100%"
+              max-height="100% "
+              border-radius="50% "
+              image={post.image}
+              alt="image title"
+            />
+          </Link>
+          <CardContent>
+            <Typography variant="h6" gutterBottom>
+              <Link
+                style={{
+                  textDecoration: "none",
+                  transition: "transform 0.2s",
+                  display: "inline-block",
+                }}
+                to={`/read/${post.id}`}
+                onMouseEnter={(e) => {
+                  e.target.style.transform = "scale(1.1)";
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.transform = "scale(1)";
+                }}
+              >
+                {post.title}
+              </Link>
+            </Typography>
+          </CardContent>
+        </Card>
+      </div>
     </Grid>
   );
 };

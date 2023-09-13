@@ -48,7 +48,7 @@ const PostForm = () => {
   };
 
   return (
-    <div style={{backgroundColor:"#edeff2"}}>
+    <div>
       <FormContainer ref={form} onSubmit={(e) => handleForm(e)}>
         <Typography variant="h4" color="initial">
           Post a Content
@@ -73,7 +73,7 @@ const PostForm = () => {
         />
         <InputField
           style={{ marginBottom: "16px" }}
-          label="TITLE"
+          label="title of article"
           variant="outlined"
           fullWidth
           required
@@ -83,7 +83,7 @@ const PostForm = () => {
           // value={post.title}
         />
         <TextField
-          label="BODY"
+          label="body of your article"
           variant="outlined"
           multiline
           rows={10}

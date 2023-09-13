@@ -16,9 +16,13 @@ const About = () => {
       sx={{
         borderTop: "2px solid #d7d8db",
         textAlign: "center",
-        backgroundColor: "#fbfaff",
+        backgroundColor: "paper",
+        mt:"20px"
       }}
     >
+      <Typography variant="h6" style={{backgroundColor:"#33180b", color:"#fff"}} gutterBottom>
+        Follow us by Link below
+      </Typography>
       <img
         src="https://avatars.githubusercontent.com/u/137094885?v=4"
         alt="Votre image"

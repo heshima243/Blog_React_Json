@@ -23,9 +23,9 @@ import About from "./About";
 const Home = () => {
   
   return (
-    <>
+    < >
   
-      <main style={{backgroundColor:"#edeff2"}}>
+      <main style={{backgroundColor:"#e3e1e1"}}>
         <Intro/>
         <PostList/>
       </main>

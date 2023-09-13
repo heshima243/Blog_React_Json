@@ -28,13 +28,15 @@ const SubmitButton = styled(Button)({
   marginTop: "16px",
 });
 
-const EditPost = ({ classes }) => {
+const EditPost = () => {
   const { id } = useParams(); // Récupère l'ID de la route
   const posts = useSelector((state) => state.postReducer.posts);
   const user = useSelector((state) => state.userReducer);
 
   const [editBody, setEditBody] = useState("");
   const [editTitle, setEditTitle] = useState("");
+  const [EditAuthor, setEditAuthor] = useState("");
+  const [EditImage, setEditImage] = useState("");
 
   const dispatch = useDispatch();
 
@@ -49,8 +51,9 @@ const EditPost = ({ classes }) => {
     e.preventDefault();
 
     const postData = {
+      author: EditAuthor,
+      image:EditImage,
       title: editTitle,
-      author: user.pseudo,
       likes: post.likes,
       id: post.id,
       body: editBody,
@@ -65,11 +68,30 @@ const EditPost = ({ classes }) => {
   }
 
   return (
-    <div style={{backgroundColor:"#edeff2",}}>
+    <div>
       <FormContainer  onSubmit={(e) => handleEdit(e)}>
         <Typography variant="h4" color="initial">
           Edith a Content
         </Typography>
+       
+        <InputField
+          label="author"
+          variant="outlined"
+          fullWidth
+          required
+          name="title"
+          defaultValue={post.author}
+          onChange={(e)=> setEditAuthor(e.target.value)}
+        />
+        <InputField
+          label="copy adress image like that https://i.pinimg.com/564x/804e602ac2a29.jpg"
+          variant="outlined"
+          fullWidth
+          required
+          name="title"
+          defaultValue={post.image}
+          onChange={(e)=> setEditImage(e.target.value)}
+        />
         <InputField
           label="Titre du post"
           variant="outlined"

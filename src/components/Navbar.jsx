@@ -33,9 +33,9 @@ export default function Navbar() {
   const container = undefined;
 
   return (
-    <Box sx={{ display: "flex",backgroundColor:"#edeff2" }}>
+    <Box sx={{ display: "flex"}}>
       <CssBaseline />
-      <AppBar component="nav" style={{ backgroundColor: "#413b45" }}>
+      <AppBar component="nav" style={{ backgroundColor: "#33180b" }}>
         <Toolbar>
           <IconButton
             color="inherit"

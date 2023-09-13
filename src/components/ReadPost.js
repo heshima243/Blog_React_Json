@@ -1,7 +1,7 @@
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Typography from "@mui/material/Typography";
-
 import {
   Box,
   Button,
@@ -10,60 +10,58 @@ import {
   Container,
   Paper,
 } from "@mui/material";
-import { useEffect, useState } from "react";
 import { deletePost, getPost } from "../reduxComponent/actions/post.action";
 import { CardMedia } from "@mui/material";
 import isEmpty from "./Utils";
-import useStyles from "../style";
 
 const ReadPost = () => {
-  const { id } = useParams(); // Récupère l'ID de la route
+  const { id } = useParams();
   const posts = useSelector((state) => state.postReducer.posts);
   const dispatch = useDispatch();
-  const [isloading, setIsloading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
-  // Recherchez l'article avec l'ID correspondant
+  let navigate = useNavigate();
 
   useEffect(() => {
     if (posts.length === 0) {
       window.scrollTo(0, 0);
       dispatch(getPost());
     }
-    setIsloading(false);
+    //setIsLoading(false);
   }, [dispatch, posts]);
-
   window.scrollTo(0, 0);
 
-  const classes = useStyles();
+  const handleDelete = () => {
+    dispatch(deletePost(post.id));
+    navigate("/");
+  };
 
   const post = posts.find((post) => post.id === parseInt(id));
 
   return (
-    <Container className={classes.centerContent}>
-      {isloading && (
-        <Box className={classes.isloadingbox1}>
-          <Box className={classes.isloadingbox2}>
-            <CircularProgress color="primary" size={64} thickness={4} />
-            <Typography variant="h6" color="primary" mt={2}>
-              Loading...
-            </Typography>
-          </Box>
-        </Box>
-      )}
+    <Container>
       {post ? (
-        <Paper className={classes.content}>
+        <Paper
+          style={{
+            textAlign: "center",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+           borderRadius:"none"
+          }}
+        >
           <Typography variant="h4" style={{ textAlign: "justify" }}>
             {post.title}
           </Typography>
           <img
             src={post.image}
-            style={{ height: "400px",
-            idth:"200px",
-            justifyContent: "center",
-            alignContent: "center",
-            margin: "auto",
-            alignItems:"center",
-            display:"flex"}}
+            style={{
+              height: "400px",
+              width: "300px",
+              margin: "auto",
+              display: "block",
+            }}
             alt={post.title}
           />
           <Typography variant="body1" style={{ textAlign: "justify" }}>
@@ -74,7 +72,7 @@ const ReadPost = () => {
             {!isEmpty(post.author) && post.author === post.author && (
               <div>
                 <Button
-                  onClick={() => dispatch(deletePost(post.id))}
+                  onClick={handleDelete}
                   variant="outlined"
                   color="error"
                   style={{ marginRight: "5px" }}
@@ -92,15 +90,30 @@ const ReadPost = () => {
               </div>
             )}
           </CardActions>
-          
         </Paper>
       ) : (
-        <Typography variant="h1" color="initial">
-          Article not found
-        </Typography>
+        <div>
+          {isLoading && (
+            <Box
+              style={{
+                textAlign: "center",
+                backgroundColor: "#edeff2",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                height: "50vh",
+              }}
+            >
+              <CircularProgress color="primary" size={64} thickness={4} />
+              <Typography variant="h6" color="primary" mt={2}>
+                Loading...
+              </Typography>
+            </Box>
+          )}
+        </div>
       )}
     </Container>
-    
   );
 };
 

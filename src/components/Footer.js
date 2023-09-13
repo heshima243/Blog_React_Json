@@ -1,15 +1,26 @@
+import styled from "styled-components";
 import { Typography } from "@mui/material";
 
-const Footer = ({ classes }) => {
+const StyledFooter = styled.footer`
+  background-color: #33180b; 
+  padding: 20px;
+  color: white;
+`;
+
+const StyledText = styled(Typography)`
+  font-weight: bold; 
+`;
+
+const Footer = () => {
   return (
-    <footer>
-      <Typography variant="h6" align="center" gutterBottom>
+    <StyledFooter>
+      <StyledText variant="h6" align="center" gutterBottom>
         Heshima inc
-      </Typography>
-      <Typography variant="subtitle1" color="paper" align="center">
-      &copy; 2023 Heshima_Lunyungu_Julien Tous droits réservés
-      </Typography>
-    </footer>
+      </StyledText>
+      <StyledText variant="subtitle1" align="center">
+        &copy; 2023 Heshima_Lunyungu_Julien Tous droits réservés
+      </StyledText>
+    </StyledFooter>
   );
 };
 
