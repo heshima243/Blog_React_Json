@@ -25,7 +25,7 @@ const Home = () => {
   return (
     < >
   
-      <main style={{backgroundColor:"#e3e1e1"}}>
+      <main style={{backgroundColor:"#e3e1e1", marginTop:"-40px"}}>
         <Intro/>
         <PostList/>
       </main>
