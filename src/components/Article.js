@@ -53,7 +53,7 @@ const Article = ({ post }) => {
                   e.target.style.transform = "scale(1)";
                 }}
               >
-                 {post.title.length > 30 ? `${post.title.substring(0, 30)}...` : post.title}
+                 {post.title.length > 40 ? `${post.title.substring(0, 30)}...` : post.title}
               </Link>
             </Typography>
           </CardContent>
