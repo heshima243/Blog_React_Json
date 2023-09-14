@@ -53,7 +53,7 @@ const RecentPost = ({ post }) => {
                   e.target.style.transform = "scale(1)";
                 }}
               >
-                {post.title.length > 30 ? `${post.title.substring(0, 30)}...` : post.title}
+                {post.title.length > 30 ? `${post.title.substring(0, 40)}...` : post.title}
               </Link>
             </Typography>
           </CardContent>
