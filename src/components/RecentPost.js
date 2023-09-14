@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 
 
 
-const Article = ({ post }) => {
+const RecentPost = ({ post }) => {
 
   window.scrollTo(0, 0);
 
@@ -32,6 +32,7 @@ const Article = ({ post }) => {
               height="200"
               object-fit="contain"
               max-width="100%"
+              border-radius="50% "
               image={post.image}
               alt="image title"
             />
@@ -42,8 +43,7 @@ const Article = ({ post }) => {
                 style={{
                   textDecoration: "none",
                   transition: "transform 0.2s",
-                  textAlign:"justify"
-                  // display: "inline-block",
+                  display: "inline-block",
                 }}
                 to={`/read/${post.id}`}
                 onMouseEnter={(e) => {
@@ -53,7 +53,7 @@ const Article = ({ post }) => {
                   e.target.style.transform = "scale(1)";
                 }}
               >
-                 {post.title.length > 30 ? `${post.title.substring(0, 30)}...` : post.title}
+                {post.title.length > 30 ? `${post.title.substring(0, 30)}...` : post.title}
               </Link>
             </Typography>
           </CardContent>
@@ -63,4 +63,4 @@ const Article = ({ post }) => {
   );
 };
 
-export default Article;
+export default RecentPost;

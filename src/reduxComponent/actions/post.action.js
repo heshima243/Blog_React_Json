@@ -14,7 +14,7 @@ export const DELETE_POST="DELETE_POST"
 export const getPost = () => {
   return (dispatch) => {
     // Effectuez la requête HTTP à l'URL de l'API
-    return axios.get("https://data-server-bhwh.onrender.com/posts")
+    return axios.get("https://data-server-bhwh.onrender.com/posts?_sort=id&_order=desc")
       .then((res) => {
         // Une fois les données récupérées, dispatchez l'action avec les données
         dispatch({ type: GET_POSTS, payload: res.data });

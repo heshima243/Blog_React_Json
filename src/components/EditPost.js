@@ -36,7 +36,7 @@ const EditPost = () => {
   const [editBody, setEditBody] = useState("");
   const [editTitle, setEditTitle] = useState("");
   const [EditAuthor, setEditAuthor] = useState("");
-  const [EditImage, setEditImage] = useState("");
+  const [EditImage, setEditImage] = useState(true);
 
   const dispatch = useDispatch();
 
@@ -46,13 +46,13 @@ const EditPost = () => {
   const post = posts.find((post) => post.id === parseInt(id));
 
   window.scrollTo(0, 0);
-  
+
   const handleEdit = async (e) => {
     e.preventDefault();
 
     const postData = {
       author: EditAuthor,
-      image:EditImage,
+      image: EditImage,
       title: editTitle,
       likes: post.likes,
       id: post.id,
@@ -69,29 +69,33 @@ const EditPost = () => {
 
   return (
     <div>
-      <FormContainer  onSubmit={(e) => handleEdit(e)}>
+      <FormContainer onSubmit={(e) => handleEdit(e)}>
         <Typography variant="h4" color="initial">
           Edith a Content
         </Typography>
-       
+
         <InputField
           label="author"
           variant="outlined"
           fullWidth
           required
-          name="title"
+          name="author"
           defaultValue={post.author}
-          onChange={(e)=> setEditAuthor(e.target.value)}
+          onChange={(e) => setEditAuthor(e.target.value)}
+          helperText="Ce champ est obligatoire"
         />
+
         <InputField
           label="copy adress image like that https://i.pinimg.com/564x/804e602ac2a29.jpg"
           variant="outlined"
           fullWidth
           required
-          name="title"
+          name="image"
           defaultValue={post.image}
-          onChange={(e)=> setEditImage(e.target.value)}
+          onChange={(e) => setEditImage(e.target.value)}
+          helperText="Ce champ est obligatoire"
         />
+
         <InputField
           label="Titre du post"
           variant="outlined"
@@ -99,8 +103,10 @@ const EditPost = () => {
           required
           name="title"
           defaultValue={post.title}
-          onChange={(e)=> setEditTitle(e.target.value)}
+          onChange={(e) => setEditTitle(e.target.value)}
+          helperText="Ce champ est obligatoire"
         />
+
         <TextField
           label="Corps du post"
           variant="outlined"
@@ -110,7 +116,9 @@ const EditPost = () => {
           required
           defaultValue={post.body}
           onChange={(e) => setEditBody(e.target.value)}
+          helperText="Ce champ est obligatoire"
         />
+
         <SubmitButton type="submit" variant="contained" color="success">
           Envoyer
         </SubmitButton>

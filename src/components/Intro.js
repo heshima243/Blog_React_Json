@@ -1,4 +1,5 @@
 import { Button, Container, Grid, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const Intro = () => {
   return (
@@ -13,20 +14,25 @@ const Intro = () => {
           Zoom to The Message
         </Typography>
         <Typography variant="h6" align="center" color="textSecondary" paragraph>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia
-          persp iciatis iusto eaque reprehenderit voluptatem voluptatibus, quide
+          "Explore a space where expression comes to life. Our blog invites you
+          to create, edit, and share captivating articles. Enjoy an enriching
+          blogging experience."
         </Typography>
         <div>
           <Grid container spacing={2} justifyContent="center">
             <Grid item>
-              <Button variant="contained" color="success">
-                Discover
-              </Button>
+              <Link to="/projects">
+                <Button variant="contained" color="success">
+                  Discover
+                </Button>
+              </Link>
             </Grid>
             <Grid item>
-              <Button variant="outlined" color="secondary">
-                Join Us
-              </Button>
+              <Link to="https://github.com/heshima243" target="_blank">
+                <Button variant="outlined" color="secondary">
+                  Join Us
+                </Button>
+              </Link>
             </Grid>
           </Grid>
         </div>

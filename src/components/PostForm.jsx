@@ -29,12 +29,18 @@ const PostForm = () => {
   const handleForm = async (e) => {
     e.preventDefault();
 
+    const tmp_date = new Date().toISOString().split('T');
+    const date =`${tmp_date[0]} ${tmp_date[1]}`;
+
     const title = form.current.title.value;
+
+
     const postData = {
+      date:date,
       author: author,
       image: image,
       title: title,
-      body: body, // Utilisation de la valeur de l'état "body"
+      body: body, 
       likes: 0,
     };
 

@@ -14,22 +14,24 @@ export default function postReducer(state = initialState, action) {
       return { ...state, posts: action.payload };
     case ADD_POST:
       return { ...state, posts: [action.payload, ...state.posts] };
-    case EDIT_POST:
-      return {
-        ...state,
-        posts: state.posts.map((post) => {
-          if (post.id === action.payload.id) {
-            // Ensure post.content is an array and concatenate the new content
-            const newContent = Array.isArray(post.content) ? post.content : [];
-            return {
-              ...post,
-              content: [action.payload.body, ...newContent],
-            };
-          } else {
-            return post;
-          }
-        }),
-      };
+      case EDIT_POST:
+        return {
+          ...state,
+          posts: state.posts.map((post) => {
+            if (post.id === action.payload.id) {
+              return {
+                ...post,
+                title: action.payload.title, 
+                image: action.payload.image, 
+                author: action.payload.author, 
+                body: action.payload.body, 
+              };
+            } else {
+              return post;
+            }
+          }),
+        };
+      
     case DELETE_POST:
       const postIdToDelete = action.payload;
       const updatedPosts = state.posts.filter(

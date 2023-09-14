@@ -7,6 +7,7 @@ import {
   LinkedIn,
   GitHub,
 } from "@mui/icons-material";
+import EmailIcon from '@mui/icons-material/Email';
 import { Link } from "react-router-dom";
 
 const About = () => {
@@ -46,11 +47,11 @@ const About = () => {
         </IconButton>
         <IconButton>
           <Link
-            to="https://github.com/heshima243?tab=repositories"
+            to="https://mail.google.com/mail/u/0/#inbox?compose=new"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Twitter />
+            <EmailIcon/>
           </Link>
         </IconButton>
         <IconButton>
