@@ -17,7 +17,7 @@ import {
 } from "@mui/material";
 import { Link } from "react-router-dom";
 
-const itemsPerPage = 3; // Number of articles to display per page
+const itemsPerPage = 6; // Number of articles to display per page
 
 const PostList = () => {
   const posts = useSelector((state) => state.postReducer.posts);
