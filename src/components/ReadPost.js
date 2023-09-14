@@ -99,9 +99,9 @@ const ReadPost = () => {
               {post.body}
             </Typography>
 
-            {/* Affiche des boutons "Delete" et "Edit" si l'auteur n'est pas vide */}
-            <CardActions>
-              {/* {!isEmpty(post.author) && post.author === post.author && ( */}
+          
+            {/* <CardActions>
+              
                 <div>
                   <Button
                     onClick={handleDelete}
@@ -120,8 +120,8 @@ const ReadPost = () => {
                     </Link>
                   </Button>
                 </div>
-              {/* )} */}
-            </CardActions>
+            
+            </CardActions> */}
           </Paper>
         ) : (
           <div>
