@@ -103,22 +103,22 @@ const ReadPost = () => {
             <CardActions>
               {/* {!isEmpty(post.author) && post.author === post.author && ( */}
                 <div>
-                  <Button
-                    onClick={handleDelete}
-                    variant="outlined"
-                    color="error"
-                    style={{ marginRight: "5px" }}
-                  >
-                    Delete
-                  </Button>
-                  <Button variant="outlined" color="secondary">
-                    <Link
-                      style={{ textDecoration: "none" }}
-                      to={`/edith/${post.id}`}
-                    >
-                      Edit
-                    </Link>
-                  </Button>
+                  // <Button
+                  //   onClick={handleDelete}
+                  //   variant="outlined"
+                  //   color="error"
+                  //   style={{ marginRight: "5px" }}
+                  // >
+                  //   Delete
+                  // </Button>
+                  // <Button variant="outlined" color="secondary">
+                  //   <Link
+                  //     style={{ textDecoration: "none" }}
+                  //     to={`/edith/${post.id}`}
+                  //   >
+                  //     Edit
+                  //   </Link>
+                  // </Button>
                 </div>
               {/* )} */}
             </CardActions>
