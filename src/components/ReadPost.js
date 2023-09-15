@@ -106,7 +106,7 @@ const ReadPost = () => {
           
             <CardActions>
               
-                <div>
+                {/* <div>
                   <Button
                     onClick={handleDelete}
                     variant="outlined"
@@ -123,7 +123,7 @@ const ReadPost = () => {
                       Edit
                     </Link>
                   </Button>
-                </div>
+                </div> */}
             
             </CardActions>
           </Paper>
