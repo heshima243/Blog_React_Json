@@ -14,7 +14,7 @@ export const DELETE_POST="DELETE_POST"
 export const getPost = () => {
   return (dispatch) => {
     // Effectuez la requête HTTP à l'URL de l'API
-    return axios.get("https://blogs-six-sigma.vercel.app/posts?_sort=id&_order=desc")
+    return axios.get("https://data-server-bhwh.onrender.com/posts?_sort=id&_order=desc")
       .then((res) => {
         // Une fois les données récupérées, dispatchez l'action avec les données
         dispatch({ type: GET_POSTS, payload: res.data });
@@ -27,7 +27,7 @@ export const getPost = () => {
 };
 export const addPost =(data)=>{
     return (dispatch)=>{
-        return axios.post("https://blogs-six-sigma.vercel.app/posts",data)
+        return axios.post("https://data-server-bhwh.onrender.com/posts",data)
         .then((res)=>{
            dispatch({type:ADD_POST, payload:data})
         }
@@ -36,7 +36,7 @@ export const addPost =(data)=>{
 
 export const editPost =(data)=>{
     return (dispatch)=>{
-        return axios.put(`https://blogs-six-sigma.vercel.app/posts/${data.id}`,data)
+        return axios.put(`https://data-server-bhwh.onrender.com/posts/${data.id}`,data)
         .then((res)=>{
            dispatch({type:EDIT_POST, payload:data})
         }
@@ -45,7 +45,7 @@ export const editPost =(data)=>{
 
 export const deletePost =(postId)=>{
     return (dispatch)=>{
-        return axios.delete(`https://blogs-six-sigma.vercel.app/posts/${postId}`)
+        return axios.delete(`https://data-server-bhwh.onrender.com/posts/${postId}`)
         .then((res)=>{
            dispatch({type:DELETE_POST, payload:postId})
         }
