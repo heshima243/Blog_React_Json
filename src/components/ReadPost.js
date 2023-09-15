@@ -60,7 +60,7 @@ const ReadPost = () => {
     .sort((a, b) => new Date(b.date) - new Date(a.date));
 
   // Obtenez les 5 articles les plus récents
-  const recentPosts = sortedPosts.slice(0, 3);
+  const recentPosts = sortedPosts.slice(0, 8);
 
   // Trouve l'article actuellement affiché en fonction de l'ID dans les paramètres d'URL
   const post = posts.find((post) => post.id === parseInt(id));
@@ -100,9 +100,9 @@ const ReadPost = () => {
             </Typography>
 
           
-            {/* <CardActions>
+            <CardActions>
               
-                <div>
+                {/* <div>
                   <Button
                     onClick={handleDelete}
                     variant="outlined"
@@ -119,9 +119,9 @@ const ReadPost = () => {
                       Edit
                     </Link>
                   </Button>
-                </div>
+                </div> */}
             
-            </CardActions> */}
+            </CardActions>
           </Paper>
         ) : (
           <div>

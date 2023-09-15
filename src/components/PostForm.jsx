@@ -46,7 +46,7 @@ const PostForm = () => {
 
     await dispatch(addPost(postData));
     dispatch(getPost());
-    form.current.reset();
+    // form.current.reset();
     setBody("");
     setTitle("");
     setAuthor("")
