@@ -87,12 +87,16 @@ const ReadPost = () => {
             </Typography>
             <img
               src={post.image}
-              style={{
-                height: "400px",
-                width: "300px",
-                margin: "auto",
-                display: "block",
-              }}
+              component="img"
+              height="200"
+              object-fit="contain"
+              max-width="100%"
+              // style={{
+              //   height: "400px",
+              //   width: "300px",
+              //   margin: "auto",
+              //   display: "block",
+              // }}
               alt={post.title}
             />
             <Typography variant="body1" style={{ textAlign: "justify" }}>
@@ -102,7 +106,7 @@ const ReadPost = () => {
           
             <CardActions>
               
-                {/* <div>
+                <div>
                   <Button
                     onClick={handleDelete}
                     variant="outlined"
@@ -119,7 +123,7 @@ const ReadPost = () => {
                       Edit
                     </Link>
                   </Button>
-                </div> */}
+                </div>
             
             </CardActions>
           </Paper>
