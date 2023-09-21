@@ -105,6 +105,14 @@ const ReadPost = () => {
 
           
             <CardActions>
+                <Button
+                    onClick={handleDelete}
+                    variant="outlined"
+                    color="error"
+                    style={{ marginRight: "5px" }}
+                  >
+                    Delete
+                  </Button>
               
                 {/* <div>
                   <Button
