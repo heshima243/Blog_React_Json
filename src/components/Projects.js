@@ -78,14 +78,14 @@ const DeveloperCV = () => {
           <ListItem
             button
             component="a"
-            href="https://heshima-movie.netlify.app"
+            href="https://heshima-store.netlify.app "
           >
             <ListItemText primary="E-Commerce" />
           </ListItem>
           <ListItem
             button
             component="a"
-            href="https://heshima-store.netlify.app"
+            href="https://heshima-movie.netlify.app"
           >
             <ListItemText primary="Movie Plateform" />
           </ListItem>
