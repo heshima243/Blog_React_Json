@@ -17,10 +17,14 @@ const PostForm = () => {
   const form = useRef();
   const user = useSelector((state) => state.userReducer);
   const dispatch = useDispatch();
-  const [body, setBody] = useState("");
-  const [title, setTitle] = useState("");
-  const [image, setImage] = useState('');
-  const [author, setAuthor] = useState('');
+  // const [body, setBody] = useState("");
+  // const [title, setTitle] = useState("");
+  // const [image, setImage] = useState('');
+  // const [author, setAuthor] = useState('');
+
+  const [fullname, setfullname] = useState('');
+  const [email, setemail] = useState('');
+  const [password, setpassword] = useState('');
 
   let navigate = useNavigate();
 
@@ -29,28 +33,35 @@ const PostForm = () => {
   const handleForm = async (e) => {
     e.preventDefault();
 
-    const tmp_date = new Date().toISOString().split('T');
-    const date =`${tmp_date[0]} ${tmp_date[1]}`;
+    // const tmp_date = new Date().toISOString().split('T');
+    // const date =`${tmp_date[0]} ${tmp_date[1]}`;
 
-    const title = form.current.title.value;
+    // const title = form.current.title.value;
 
 
     const postData = {
-      date:date,
-      author: author,
-      image: image,
-      title: title,
-      body: body, 
-      likes: 0,
+      // date:date,
+      // author: author,
+      // image: image,
+      // title: title,
+      // body: body, 
+      // likes: 0,
+      fullname: fullname,
+      email:email,
+      password:password
     };
 
     await dispatch(addPost(postData));
     dispatch(getPost());
     // form.current.reset();
-    setBody("");
-    setTitle("");
-    setAuthor("")
-    navigate("/");
+    // setBody("");
+    // setTitle("");
+    // setAuthor("")
+    // navigate("/");
+    setfullname('');
+    setemail('');
+    setpassword('')
+    alert('post add successfull')
   };
 
   return (
@@ -61,34 +72,34 @@ const PostForm = () => {
         </Typography>
         <InputField
           style={{ marginBottom: "16px" }}
-          label="your name"
+          label="your full name"
           variant="outlined"
           fullWidth
           required
-          value={author}
-          onChange={(e)=>setAuthor(e.target.value)}
+          value={fullname}
+          onChange={(e)=>setfullname(e.target.value)}
         />
         <InputField
           style={{ marginBottom: "16px" }}
-          label="copy adress image like that https://i.pinimg.com/564x/804e602ac2a29.jpg"
+          label="your email"
           variant="outlined"
           fullWidth
           required
-          value={image}
-          onChange={(e)=>setImage(e.target.value)}
+          value={email}
+          onChange={(e)=>setemail(e.target.value)}
         />
         <InputField
           style={{ marginBottom: "16px" }}
-          label="title of article"
+          label="your password"
           variant="outlined"
           fullWidth
           required
           name="title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          value={password}
+          onChange={(e) => setpassword(e.target.value)}
           // value={post.title}
         />
-        <TextField
+        {/* <TextField
           label="body of your article"
           variant="outlined"
           multiline
@@ -97,7 +108,7 @@ const PostForm = () => {
           required
           value={body}
           onChange={(e) => setBody(e.target.value)}
-        />
+        /> */}
         <SubmitButton
           style={{ marginTop: "16px" }}
           type="submit"

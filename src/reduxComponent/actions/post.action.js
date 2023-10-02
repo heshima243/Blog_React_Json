@@ -27,11 +27,17 @@ export const getPost = () => {
 };
 export const addPost =(data)=>{
     return (dispatch)=>{
-        return axios.post("https://json-julio.onrender.com/posts",data)
+        return axios.post("https://crudmongo-28tp.onrender.com/logup",data)
         .then((res)=>{
            dispatch({type:ADD_POST, payload:data})
+           console.log('success');
         }
-    )}
+    )
+    .catch((error) => {
+      // Gérez les erreurs ici si nécessaire
+      console.error("Error logup posts:", error);
+    });
+  }
 }
 
 export const editPost =(data)=>{
