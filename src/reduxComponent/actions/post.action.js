@@ -27,10 +27,10 @@ export const getPost = () => {
 };
 export const addPost =(data)=>{
     return (dispatch)=>{
-        return axios.post("https://crudmongo-28tp.onrender.com/logup",data)
+        return axios.post("https://json-julio.onrender.com/posts",data)
         .then((res)=>{
            dispatch({type:ADD_POST, payload:data})
-           console.log('success');
+         console.log('success');
         }
     )
     .catch((error) => {
